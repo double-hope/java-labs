@@ -10,8 +10,6 @@ public class Main
 {
     public static void main( String[] args )
     {
-        LinkedList<Integer> list = new LinkedList<>(3);
-        list.set(2, 3);
-
+        System.out.println("Hello World!");
     }
 }
