@@ -196,16 +196,6 @@ public class LinkedList<T> implements List<T> {
     }
 
     @Override
-    public void replaceAll(UnaryOperator<T> operator) {
-        List.super.replaceAll(operator);
-    }
-
-    @Override
-    public void sort(Comparator<? super T> c) {
-        List.super.sort(c);
-    }
-
-    @Override
     public void clear() {
         this.size = 0;
         this.head = null;
