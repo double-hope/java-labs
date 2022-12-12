@@ -67,6 +67,5 @@ public class Main
 
         LinkedList<Integer> list4 = new LinkedList<>(list3);
         System.out.println("Create LinkedList4 with constructor with Collection: " + Arrays.toString(list4.toArray()));
-
     }
 }
