@@ -9,6 +9,19 @@ public class LinkedList<T> implements List<T> {
     private Node<T> node;
     private Node<T> tail;
     private int size = 0;
+    public LinkedList(){
+        this.head = null;
+        this.node = null;
+        this.tail = null;
+    }
+
+    public LinkedList(T t){
+        this.add(t);
+    }
+
+    public LinkedList(Collection<? extends T> c){
+        this.addAll(c);
+    }
     @Override
     public int size() {
         return size;
