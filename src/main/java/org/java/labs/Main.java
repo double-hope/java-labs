@@ -1,6 +1,8 @@
 package org.java.labs;
 
-import java.util.LinkedList;
+import org.java.labs.lab7.LinkedList;
+
+import java.util.Arrays;
 
 /**
  * Hello world!

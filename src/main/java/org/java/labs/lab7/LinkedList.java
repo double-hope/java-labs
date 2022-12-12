@@ -174,6 +174,9 @@ public class LinkedList<T> implements List<T> {
                     if (previous != null) {
                         previous.setNext(newNode);
                         previous = previous.getNext();
+                    } else {
+                        previous = newNode;
+                        this.head = previous;
                     }
                 }
                 if (previous != null) previous.setNext(current);
@@ -319,9 +322,8 @@ public class LinkedList<T> implements List<T> {
         for (int i = 0; i < this.size; i++) {
             if (current.getData() == o) {
                 index = i;
-            } else {
-                current = current.getNext();
             }
+            current = current.getNext();
         }
         return index;
     }
@@ -337,15 +339,15 @@ public class LinkedList<T> implements List<T> {
     }
 
     @Override
-    public List<T> subList(int fromIndex, int toIndex) {
+    public LinkedList<T> subList(int fromIndex, int toIndex) {
 
-        if (toIndex >= this.size) throw new ArrayIndexOutOfBoundsException();
+        if (toIndex > this.size) throw new ArrayIndexOutOfBoundsException();
         else if (toIndex < fromIndex) throw new IllegalArgumentException();
 
-        List<T> subList = new LinkedList<>();
+        LinkedList<T> subList = new LinkedList<>();
         Node<T> current = this.head;
 
-        for (int i = 0; i <= toIndex; i++) {
+        for (int i = 0; i < toIndex; i++) {
             if (i >= fromIndex) {
                 subList.add(current.getData());
             }
