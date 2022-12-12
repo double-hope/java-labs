@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * class Tariff
  */
-public class Tariff {
+public abstract class Tariff {
     /**
      * fields
      */
