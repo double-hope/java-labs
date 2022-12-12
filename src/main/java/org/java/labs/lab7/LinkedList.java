@@ -1,7 +1,6 @@
 package org.java.labs.lab7;
 
 import java.util.*;
-import java.util.function.UnaryOperator;
 
 public class LinkedList<T> implements List<T> {
 
