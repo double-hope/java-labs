@@ -33,8 +33,8 @@ public class LinkedList<T> implements List<T> {
     }
 
     @Override
-    public Iterator<T> iterator() {
-        return null;
+    public CustomIterator<T> iterator() {
+        return new CustomIterator<>(new Node<>(null, this.node));
     }
 
     @Override
