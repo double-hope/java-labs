@@ -46,7 +46,7 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public CustomIterator<T> iterator() {
-        return new CustomIterator<>(new Node<>(null, this.node));
+        return new CustomIterator<>(new Node<>(null, this.head));
     }
 
     @Override
