@@ -161,7 +161,7 @@ public class LinkedList<T> implements List<T> {
     }
     @Override
     public boolean addAll(int index, Collection<? extends T> c) {
-        if (index > this.size) throw new ArrayIndexOutOfBoundsException();
+        if (index >= this.size) throw new ArrayIndexOutOfBoundsException();
 
         Node<T> previous = null;
         Node<T> current = this.head;
@@ -220,7 +220,7 @@ public class LinkedList<T> implements List<T> {
     @Override
     public T get(int index) {
 
-        if (index > this.size) throw new ArrayIndexOutOfBoundsException();
+        if (index >= this.size) throw new ArrayIndexOutOfBoundsException();
 
         Node<T> current = this.head;
         for (int i = 0; i < this.size; i++) {
@@ -237,7 +237,7 @@ public class LinkedList<T> implements List<T> {
     @Override
     public T set(int index, T element) {
 
-        if (index > this.size) throw new ArrayIndexOutOfBoundsException();
+        if (index >= this.size) throw new ArrayIndexOutOfBoundsException();
 
         Node<T> current = this.head;
         for (int i = 0; i < this.size; i++) {
@@ -254,7 +254,7 @@ public class LinkedList<T> implements List<T> {
     @Override
     public void add(int index, T element) {
 
-        if (index > this.size) throw new ArrayIndexOutOfBoundsException();
+        if (index >= this.size) throw new ArrayIndexOutOfBoundsException();
 
         Node<T> previous = null;
         Node<T> current = this.head;
@@ -275,7 +275,7 @@ public class LinkedList<T> implements List<T> {
     @Override
     public T remove(int index) {
 
-        if (index > this.size) throw new ArrayIndexOutOfBoundsException();
+        if (index >= this.size) throw new ArrayIndexOutOfBoundsException();
 
         Node<T> previous = null;
         Node<T> current = this.head;
@@ -339,7 +339,7 @@ public class LinkedList<T> implements List<T> {
     @Override
     public List<T> subList(int fromIndex, int toIndex) {
 
-        if (toIndex > this.size) throw new ArrayIndexOutOfBoundsException();
+        if (toIndex >= this.size) throw new ArrayIndexOutOfBoundsException();
         else if (toIndex < fromIndex) throw new IllegalArgumentException();
 
         List<T> subList = new LinkedList<>();

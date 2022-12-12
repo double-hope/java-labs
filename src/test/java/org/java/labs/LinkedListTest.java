@@ -48,4 +48,32 @@ public class LinkedListTest {
         list2.remove((Object)2);
         Assert.assertArrayEquals("Add object to list", result, list2.toArray());
     }
+
+    @Test
+    public void testClear() {
+        Integer[] result = new Integer[]{};
+        list2.clear();
+        Assert.assertArrayEquals("Add object to list", result, list2.toArray());
+    }
+
+    @Test
+    public void testIsEmpty() {
+        Assert.assertTrue("Test list is empty", list1.isEmpty());
+        Assert.assertFalse("Test list is empty", list2.isEmpty());
+    }
+
+    @Test
+    public void testContains() {
+        Assert.assertTrue("Test list contains object", list2.contains(2));
+        Assert.assertFalse("Test list contains object", list2.contains(1));
+    }
+
+    @Test
+    public void testSet() {
+        Integer[] result = new Integer[]{3};
+        list2.set(0, 3);
+        Assert.assertArrayEquals("Set object in list", result, list2.toArray());
+
+        Assert.assertThrows(ArrayIndexOutOfBoundsException.class, () -> list2.set(1, 3));
+    }
 }
