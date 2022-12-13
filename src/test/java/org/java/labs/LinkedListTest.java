@@ -1,6 +1,8 @@
 package org.java.labs;
 
 import org.java.labs.lab7.LinkedList;
+import org.java.labs.lab8.IndexNotExistsException;
+import org.java.labs.lab8.IndexesOrderException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -60,8 +62,8 @@ public class LinkedListTest {
         Assert.assertArrayEquals("Add collection to list", result, list2.toArray());
     }
     @Test
-    public void addWithIndex_addingCollectionWithNonExistentIndex_arrayIndexOutOfBoundsException() {
-        Assert.assertThrows(ArrayIndexOutOfBoundsException.class, () -> list2.add(5, 1));
+    public void addWithIndex_addingCollectionWithNonExistentIndex_IndexNotExistsException() {
+        Assert.assertThrows(IndexNotExistsException.class, () -> list2.add(5, 1));
     }
     @Test
     public void addAll_addingCollectionToList_collectionAdded() {
@@ -91,8 +93,8 @@ public class LinkedListTest {
         Assert.assertArrayEquals("Add collection to list", result, list2.toArray());
     }
     @Test
-    public void addAllWithIndex_addingCollectionWithNonExistentIndex_arrayIndexOutOfBoundsException() {
-        Assert.assertThrows(ArrayIndexOutOfBoundsException.class, () -> list2.addAll(5, testList));
+    public void addAllWithIndex_addingCollectionWithNonExistentIndex_IndexNotExistsException() {
+        Assert.assertThrows(IndexNotExistsException.class, () -> list2.addAll(5, testList));
     }
 
     @Test
@@ -159,8 +161,6 @@ public class LinkedListTest {
         Integer[] result = new Integer[]{3};
         list2.set(0, 3);
         Assert.assertArrayEquals("Set object in list", result, list2.toArray());
-
-        Assert.assertThrows(ArrayIndexOutOfBoundsException.class, () -> list2.set(1, 3));
     }
     @Test
     public void set_setMiddleElementInList_elementSet() {
@@ -171,8 +171,8 @@ public class LinkedListTest {
         Assert.assertArrayEquals("Set object in list", result, list2.toArray());
     }
     @Test
-    public void set_setNonExistentElementInList_arrayIndexOutOfBoundsException() {
-        Assert.assertThrows(ArrayIndexOutOfBoundsException.class, () -> list2.set(1, 3));
+    public void set_setNonExistentElementInList_IndexNotExistsException() {
+        Assert.assertThrows(IndexNotExistsException.class, () -> list2.set(1, 3));
     }
 
     @Test
@@ -251,5 +251,12 @@ public class LinkedListTest {
         LinkedList<Integer> actual = list2.subList(0, list2.size());
         Assert.assertArrayEquals("Create sublist", result.toArray(), actual.toArray());
     }
-
+    @Test
+    public void sublist_createSublistFromListWithNonExistentIndex_IndexNotExistsException() {
+        Assert.assertThrows(IndexNotExistsException.class, () -> list2.subList(0, list2.size() + 1));
+    }
+    @Test
+    public void sublist_createSublistFromListWithStartIndexLessThanEndIndex_IndexesOrderException() {
+        Assert.assertThrows(IndexesOrderException.class, () -> list2.subList(list2.size(), 0));
+    }
 }
