@@ -1,7 +1,7 @@
 package org.java.labs.lab6;
 
 /**
- * class Client
+ * record Client
  * creates a Tariff user
  *
  * @param name
