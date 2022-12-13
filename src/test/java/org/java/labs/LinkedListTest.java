@@ -149,13 +149,11 @@ public class LinkedListTest {
         Integer actual = list1.indexOf(1);
         Assert.assertEquals("Get first index of object in list", result, actual);
 
-
         list1.add(2);
         list1.add(1);
         result = 1;
         actual = list1.indexOf(2);
         Assert.assertEquals("Get first index of object in list", result, actual);
-
 
         result = -1;
         actual = list1.indexOf(3);
