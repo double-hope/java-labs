@@ -99,6 +99,7 @@ public class LinkedList<T> implements List<T> {
         Node<T> current = this.head;
         Node<T> next = this.head.getNext();
 
+        if(!this.contains(o)) return false;
         for (int i = 0; i < this.size; i++) {
             if (current.getData() == o) {
                 if (previous == null)

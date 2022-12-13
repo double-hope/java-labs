@@ -69,7 +69,13 @@ public class LinkedListTest {
         list2.addAll(testList);
         Assert.assertArrayEquals("Add collection to list", result, list2.toArray());
     }
-
+    @Test
+    public void addAll_addingCollectionToFilledList_collectionAdded() {
+        Integer[] result = new Integer[]{2, 1, 2, 1, 2};
+        list2.addAll(testList);
+        list2.addAll(testList);
+        Assert.assertArrayEquals("Add collection to list", result, list2.toArray());
+    }
     @Test
     public void addAllWithIndex_addingCollectionInTheFirstPlaceOfList_collectionAdded() {
         Integer[] result = new Integer[]{1, 2, 2};
@@ -100,15 +106,21 @@ public class LinkedListTest {
     public void remove_removeFirstNodeInList_nodeRemoved() {
         Integer[] result = new Integer[]{};
         list2.remove(0);
-        Assert.assertArrayEquals("Add object to list", result, list2.toArray());
+        Assert.assertArrayEquals("Remove object from list", result, list2.toArray());
     }
     @Test
-    public void removeObject_removeObjectInList_objectRemoved() {
-        Integer[] result = new Integer[]{};
-        list2.remove((Object)2);
-        Assert.assertArrayEquals("Add object to list", result, list2.toArray());
+    public void removeObject_removeObjectInList_returnTrue() {
+        Assert.assertTrue("Remove object from list", list2.remove((Object)2));
     }
-
+    @Test
+    public void removeObject_removeObjectInMiddleOfList_returnTrue() {
+        list2.add(3);
+        Assert.assertTrue("Remove object from list", list2.remove((Object)3));
+    }
+    @Test
+    public void removeObject_removeNonExistentObjectInList_returnFalse() {
+        Assert.assertFalse("Remove object from list", list2.remove((Object)4));
+    }
     @Test
     public void clear_clearList_listCleaned() {
         Integer[] result = new Integer[]{};
@@ -133,6 +145,14 @@ public class LinkedListTest {
     @Test
     public void contains_checkListContainsObject_returnFalse() {
         Assert.assertFalse("Test list contains object", list2.contains(1));
+    }
+    @Test
+    public void containsAll_checkListContainsAllObjectsFromCollection_returnTrue() {
+        Assert.assertTrue("Test list contains collection", list2.containsAll(list3));
+    }
+    @Test
+    public void containsAll_checkListContainsAllObjectsFromCollection_returnFalse() {
+        Assert.assertFalse("Test list contains collection", list2.containsAll(testList));
     }
     @Test
     public void set_setFirstElementInList_elementSet() {
@@ -223,14 +243,6 @@ public class LinkedListTest {
         list2.add(3);
         list2.retainAll(list3);
         Assert.assertArrayEquals("Remove all collection from list", result, list2.toArray());
-    }
-    @Test
-    public void containsAll_checkListContainsAllObjectsFromCollection_returnTrue() {
-        Assert.assertTrue("Test list contains collection", list2.containsAll(list3));
-    }
-    @Test
-    public void containsAll_checkListContainsAllObjectsFromCollection_returnFalse() {
-        Assert.assertFalse("Test list contains collection", list2.containsAll(testList));
     }
 
     @Test
