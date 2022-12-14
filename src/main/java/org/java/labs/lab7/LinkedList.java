@@ -1,5 +1,8 @@
 package org.java.labs.lab7;
 
+import org.java.labs.lab8.IndexNotExistsException;
+import org.java.labs.lab8.IndexesOrderException;
+
 import java.util.*;
 
 public class LinkedList<T> implements List<T> {
@@ -99,6 +102,7 @@ public class LinkedList<T> implements List<T> {
         Node<T> current = this.head;
         Node<T> next = this.head.getNext();
 
+        if(!this.contains(o)) return false;
         for (int i = 0; i < this.size; i++) {
             if (current.getData() == o) {
                 if (previous == null)
@@ -161,6 +165,8 @@ public class LinkedList<T> implements List<T> {
     }
     @Override
     public boolean addAll(int index, Collection<? extends T> c) {
+        if (index >= this.size) throw new IndexNotExistsException(index, this.size);
+
         Node<T> previous = null;
         Node<T> current = this.head;
         Node<T> newNode;
@@ -172,6 +178,9 @@ public class LinkedList<T> implements List<T> {
                     if (previous != null) {
                         previous.setNext(newNode);
                         previous = previous.getNext();
+                    } else {
+                        previous = newNode;
+                        this.head = previous;
                     }
                 }
                 if (previous != null) previous.setNext(current);
@@ -217,6 +226,8 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public T get(int index) {
+        if (index >= this.size) throw new IndexNotExistsException(index, this.size);
+
         Node<T> current = this.head;
         for (int i = 0; i < this.size; i++) {
             if (i == index) {
@@ -231,6 +242,8 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public T set(int index, T element) {
+        if (index >= this.size) throw new IndexNotExistsException(index, this.size);
+
         Node<T> current = this.head;
         for (int i = 0; i < this.size; i++) {
             if (i == index) {
@@ -245,6 +258,8 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public void add(int index, T element) {
+        if (index >= this.size) throw new IndexNotExistsException(index, this.size);
+
         Node<T> previous = null;
         Node<T> current = this.head;
 
@@ -263,6 +278,8 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public T remove(int index) {
+        if (index >= this.size) throw new IndexNotExistsException(index, this.size);
+
         Node<T> previous = null;
         Node<T> current = this.head;
         Node<T> next = this.head.getNext();
@@ -305,9 +322,8 @@ public class LinkedList<T> implements List<T> {
         for (int i = 0; i < this.size; i++) {
             if (current.getData() == o) {
                 index = i;
-            } else {
-                current = current.getNext();
             }
+            current = current.getNext();
         }
         return index;
     }
@@ -323,11 +339,14 @@ public class LinkedList<T> implements List<T> {
     }
 
     @Override
-    public List<T> subList(int fromIndex, int toIndex) {
-        List<T> subList = new LinkedList<>();
+    public LinkedList<T> subList(int fromIndex, int toIndex) {
+        if (toIndex > this.size) throw new IndexNotExistsException(toIndex, this.size);
+        else if (toIndex < fromIndex) throw new IndexesOrderException("Start index cannot be less than end index");
+
+        LinkedList<T> subList = new LinkedList<>();
         Node<T> current = this.head;
 
-        for (int i = 0; i <= toIndex; i++) {
+        for (int i = 0; i < toIndex; i++) {
             if (i >= fromIndex) {
                 subList.add(current.getData());
             }

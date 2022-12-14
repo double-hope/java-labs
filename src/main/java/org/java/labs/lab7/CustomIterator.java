@@ -20,8 +20,4 @@ public class CustomIterator<E> implements Iterator<E> {
         return this.node.getData();
     }
 
-    @Override
-    public void remove() {
-        Iterator.super.remove();
-    }
 }
