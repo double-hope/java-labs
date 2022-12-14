@@ -1,7 +1,6 @@
 package org.java.labs.lab6;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.java.labs.lab7.LinkedList;
 
 /**
  * class Tariff
@@ -15,7 +14,7 @@ public abstract class Tariff {
     private final int gigabytes;
     private final int minutes;
     private final int messages;
-    private final List<Client> clients = new ArrayList<>();
+    private final LinkedList<Client> clients = new LinkedList<>();
 
     /**
      * constructor Tariff
@@ -53,7 +52,7 @@ public abstract class Tariff {
     public int getMessages() {
         return messages;
     }
-    public List<Client> getClients() {
+    public LinkedList<Client> getClients() {
         return clients;
     }
 

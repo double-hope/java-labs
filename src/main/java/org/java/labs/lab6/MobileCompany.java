@@ -1,5 +1,7 @@
 package org.java.labs.lab6;
 
+import org.java.labs.lab7.LinkedList;
+
 import java.util.List;
 
 /**
@@ -9,7 +11,7 @@ public class MobileCompany {
     /**
      * field
      */
-    List<Tariff> tariffs;
+    LinkedList<Tariff> tariffs;
 
     /**
      * constructor MobileCompany
@@ -17,7 +19,7 @@ public class MobileCompany {
      * @param tariffs
      */
 
-    public MobileCompany(List<Tariff> tariffs){
+    public MobileCompany(LinkedList<Tariff> tariffs){
         this.tariffs = tariffs;
     }
 
