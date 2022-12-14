@@ -1,7 +1,6 @@
 package org.java.labs.lab6;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.java.labs.lab7.LinkedList;
 
 /**
  * class MobileCompanyManager
@@ -43,8 +42,8 @@ public class MobileCompanyManager {
      *
      * @return
      */
-    public List<Tariff> sortTariffsByCosts(){
-        List<Tariff> tariffs = new ArrayList<>(this.mobileCompany.tariffs);
+    public LinkedList<Tariff> sortTariffsByCosts(){
+        LinkedList<Tariff> tariffs = new LinkedList<>(this.mobileCompany.tariffs);
         boolean isSorted = false;
         Tariff exchanger;
 
